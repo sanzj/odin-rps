@@ -1,14 +1,14 @@
 
-
 game();
 
+//FUNCTION DECLARATIONS
 function computerPlay(){
     let rand = Math.random().toFixed(3);
-    console.log(rand);
-    if(rand < 0.333) {
+    //console.log(rand);
+    if (rand < 0.333) {
         return 'rock';
     }
-    else if(rand > 0.666){
+    else if (rand > 0.666){
         return 'scissors'
     }
     else{
@@ -17,12 +17,12 @@ function computerPlay(){
 } 
 
 function playRound(playerMove, computerMove){
-    if(playerMove.toLowerCase() === 'rock'){
+    if (playerMove.toLowerCase() === 'rock'){
         if(computerMove === 'rock') return "it's a tie!";
         else if (computerMove === 'paper') return "you lost. paper > rock";
         else if (computerMove === 'scissors') return "you won! rock > scissors";
     }
-    else if(playerMove.toLowerCase() === 'paper'){
+    else if (playerMove.toLowerCase() === 'paper'){
         if(computerMove === 'rock') return "you won! paper > rock";
         else if (computerMove === 'paper') return "it's a tie!";
         else if (computerMove === 'scissors') return "you lost. scissors > paper";
@@ -35,7 +35,8 @@ function playRound(playerMove, computerMove){
 }
 
 function game(){
-    for(let i = 0; i < 5; i++){
-        console.log(playRound('rock', computerPlay()));
+    for(let i = 0; i < 3; i++){
+        let playerMove = prompt("choose rock, paper, or scissors");
+        console.log(playRound(playerMove, computerPlay()));
     }
 }
