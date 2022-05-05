@@ -1,23 +1,31 @@
 
 //game();
-let playerCounter, computerCounter = 0;
+let playerCounter = computerCounter = 0;
+
+const choiceUI = document.querySelector('h3');
 
 const rock = document.querySelector('#rock-choice');
 rock.addEventListener('click', e => {
-    console.log(e);
-    console.log(playRound('rock', computerPlay()));
+    //console.log(e);
+    
+    choiceUI.textContent = playRound('rock', computerPlay());
+    updateScore();
 })
 
 const paper = document.querySelector('#paper-choice');
 paper.addEventListener('click', e => {
-    console.log(e);
-    console.log(playRound('paper', computerPlay()));
+    //console.log(e);
+    
+    choiceUI.textContent = playRound('paper', computerPlay());
+    updateScore();
 })
 
 const scissors = document.querySelector('#scissors-choice');
 scissors.addEventListener('click', e => {
-    console.log(e);
-    console.log(playRound('scissors', computerPlay()));
+    //console.log(e);
+    
+    choiceUI.textContent = playRound('scissors', computerPlay());
+    updateScore();
 })
 
 //FUNCTION DECLARATIONS
@@ -35,20 +43,43 @@ function computerPlay(){
     }
 } 
 
+function updateScore(){
+    document.querySelector('#player-score').textContent = playerCounter;
+    document.querySelector('#computer-score').textContent = computerCounter;
+}
+
 function playRound(playerMove, computerMove){
     if (playerMove.toLowerCase() === 'rock'){
         if(computerMove === 'rock') return "it's a tie!";
-        else if (computerMove === 'paper') return "you lost. paper > rock";
-        else if (computerMove === 'scissors') return "you won! rock > scissors";
+        else if (computerMove === 'paper'){
+            computerCounter++; 
+            return "rock < paper"
+        }
+        else if (computerMove === 'scissors') {
+            playerCounter++;
+            return "rock > scissors";
+        }
     }
     else if (playerMove.toLowerCase() === 'paper'){
-        if(computerMove === 'rock') return "you won! paper > rock";
+        if(computerMove === 'rock') {
+            playerCounter ++;
+            return "paper > rock";
+        }
         else if (computerMove === 'paper') return "it's a tie!";
-        else if (computerMove === 'scissors') return "you lost. scissors > paper";
+        else if (computerMove === 'scissors') {
+            computerCounter++;
+            return "paper < scissors";
+        }
     }
     else if (playerMove.toLowerCase() === 'scissors'){
-        if(computerMove === 'rock') return "you lost. rock > scissors";
-        else if (computerMove === 'paper') return "you won! scissors > paper";
+        if(computerMove === 'rock') {
+            computerCounter++;
+            return "scissors < rock";
+        }
+        else if (computerMove === 'paper') {
+            playerCounter++;
+            return "scissors > paper";
+        }
         else if (computerMove === 'scissors') return "It's a tie!";
     }
 }
