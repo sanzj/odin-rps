@@ -1,5 +1,24 @@
 
-game();
+//game();
+let playerCounter, computerCounter = 0;
+
+const rock = document.querySelector('#rock-choice');
+rock.addEventListener('click', e => {
+    console.log(e);
+    console.log(playRound('rock', computerPlay()));
+})
+
+const paper = document.querySelector('#paper-choice');
+paper.addEventListener('click', e => {
+    console.log(e);
+    console.log(playRound('paper', computerPlay()));
+})
+
+const scissors = document.querySelector('#scissors-choice');
+scissors.addEventListener('click', e => {
+    console.log(e);
+    console.log(playRound('scissors', computerPlay()));
+})
 
 //FUNCTION DECLARATIONS
 function computerPlay(){
