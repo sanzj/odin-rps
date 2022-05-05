@@ -1,29 +1,24 @@
 
 //game();
-let playerCounter = computerCounter = 0;
+let playerCounter = 0;
+let computerCounter = 0;
 
 const choiceUI = document.querySelector('h3');
 
 const rock = document.querySelector('#rock-choice');
 rock.addEventListener('click', e => {
-    //console.log(e);
-    
     choiceUI.textContent = playRound('rock', computerPlay());
     updateScore();
 })
 
 const paper = document.querySelector('#paper-choice');
 paper.addEventListener('click', e => {
-    //console.log(e);
-    
     choiceUI.textContent = playRound('paper', computerPlay());
     updateScore();
 })
 
 const scissors = document.querySelector('#scissors-choice');
 scissors.addEventListener('click', e => {
-    //console.log(e);
-    
     choiceUI.textContent = playRound('scissors', computerPlay());
     updateScore();
 })
@@ -44,8 +39,22 @@ function computerPlay(){
 } 
 
 function updateScore(){
-    document.querySelector('#player-score').textContent = playerCounter;
-    document.querySelector('#computer-score').textContent = computerCounter;
+    let playerScore = document.querySelector('#player-score');
+    let computerScore = document.querySelector('#computer-score');
+    let setResult = document.querySelector('#set-result');
+
+    setResult.textContent = '';
+    playerScore.textContent = playerCounter;
+    computerScore.textContent = computerCounter;
+
+    if (playerCounter >= 3){
+        setResult.textContent = 'you won';
+        playerCounter = computerCounter = 0;
+    } 
+    else if (computerCounter >= 3){
+        setResult.textContent = 'you lost';
+        playerCounter = computerCounter = 0;
+    }
 }
 
 function playRound(playerMove, computerMove){
