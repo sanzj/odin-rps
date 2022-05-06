@@ -1,5 +1,4 @@
 
-//game();
 let playerCounter = 0;
 let computerCounter = 0;
 
@@ -89,13 +88,6 @@ function playRound(playerMove, computerMove){
             playerCounter++;
             return "scissors > paper";
         }
-        else if (computerMove === 'scissors') return "It's a tie!";
-    }
-}
-
-function game(){
-    for(let i = 0; i < 3; i++){
-        let playerMove = prompt("choose rock, paper, or scissors");
-        console.log(playRound(playerMove, computerPlay()));
+        else if (computerMove === 'scissors') return "it's a tie!";
     }
 }
